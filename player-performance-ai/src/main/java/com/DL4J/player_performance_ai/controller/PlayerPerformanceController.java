@@ -99,6 +99,7 @@ public class PlayerPerformanceController {
     
     
     /* get top N players based on overall performance metrics */
+    
     @GetMapping("/top/{count}")
     public List<PlayerPerformanceDto> getTopPlayers(@PathVariable int count) {
         return service.getTopPlayers(count);
@@ -106,6 +107,7 @@ public class PlayerPerformanceController {
 
     
    /*compare two players based on their predicted suitability and used ML training */
+    
     @GetMapping("/compare/{id1}/{id2}")
     public ResponseEntity<String> comparePlayers(@PathVariable Long id1, @PathVariable Long id2) {
         return ResponseEntity.ok(service.comparePlayers(id1, id2));
@@ -113,6 +115,7 @@ public class PlayerPerformanceController {
     
 
     /* Gives you a quick dataset summary (useful for dashboards) */
+    
     @GetMapping("/stats/average")
     public Map<String, Double> getAverageStats() {
         return service.getAverageStats();
@@ -120,6 +123,7 @@ public class PlayerPerformanceController {
     
 
     /* Find all players who exceed certain thresholds (e.g., batting average > 50). */
+    
     @PostMapping("/filter")
     public List<PlayerPerformanceDto> filterPlayers(@RequestBody Map<String, Object> filterCriteria) {
         double minAverage = ((Number) filterCriteria.getOrDefault("minAverage", 0)).doubleValue();
