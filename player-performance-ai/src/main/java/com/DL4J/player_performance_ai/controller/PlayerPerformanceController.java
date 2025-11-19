@@ -106,7 +106,6 @@ public class PlayerPerformanceController {
 
     
    /*compare two players based on their predicted suitability and used ML training */
-    
     @GetMapping("/compare/{id1}/{id2}")
     public ResponseEntity<String> comparePlayers(@PathVariable Long id1, @PathVariable Long id2) {
         return ResponseEntity.ok(service.comparePlayers(id1, id2));
